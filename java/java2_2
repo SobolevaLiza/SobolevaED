@@ -1,0 +1,47 @@
+//Дан двумерный массив А размером n*n . Найти количество элементов, равных 
+//заданному числу х и расположенных в верхней треугольной матрице, расположенной
+//выше побочной диагонали, исключая саму побочную диагональ.
+
+import java.util.Scanner;
+import java.lang.Math;
+
+public class Pr2_z4 {
+    public static void main (String args[]) {
+
+        int k = 0;                                            // счетчик элементов, равных х
+
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Введите размер массива: ");      //ввод с консоли размера массива n
+        int n = sc.nextInt();
+        System.out.println("Размер массива: " + n);
+
+        int[][] A = new int [n][n];
+
+        System.out.println("Ваш массив: ");                // заполнение матрицы рандомными элементами  
+        for (int i = 0; i < n; i++){                          // и вывод на консоль   
+            for (int j = 0; j < n; j++){
+                A[i][j] = (int) (Math.random() *5);
+                System.out.print (" " + A[i][j]);
+            }   
+            System.out.println();                 
+        }
+
+        System.out.print("Введите число х: ");      
+        int x = sc.nextInt();
+        System.out.println("Ваше число: " + x);
+        sc.close();
+
+        for (int i = 0; i < n - 1; i++){
+            for (int j = i + 1; j < n; j++){                    // вывод на консоль элементов, которые находятся 
+                if (A[i][j] == x){                          //выше побочной диагонали, включая саму побочную диагональ
+                    k++;
+                }
+                System.out.print(A[i][j] + " ");
+            }
+            System.out.println();
+        }
+        System.out.println("Количество элементов, равных данному: " + k);
+    }
+    
+}
+//с вашего разрешения выкладываю, как есть
