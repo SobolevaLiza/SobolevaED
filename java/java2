@@ -1,0 +1,36 @@
+/* Дан массив a из n элементов. Вычислить, сколько элементов данного 
+массива больше в 3 раза своего предыдущего элемента */
+
+import java.util.Scanner;           //библиотека для ввода с консоли
+import java.lang.Math;              //библиотека для рандома
+
+public class Pr2_z1 {
+    public static void main (String args[]){
+
+        int k = 0;       // счетчик элементов больше предыдущего в 3 раза
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Введите размер массива");      //ввод с консоли размера массива n
+        int n = sc.nextInt();
+        System.out.println("Размер массива: " + n);
+        sc.close();
+        int[] a = new int [n];
+
+        for (int i = 0; i < n; i++){                //заполнение массива рандомными значениями
+            a[i] = (int) (Math.random() *400);
+        }
+
+        System.out.println("Ваш массив: ");
+        for (int i = 0; i < n; i++){
+            System.out.print(a[i] + " ");
+        }
+
+        for (int i = 1; i < n; i++){                //подсчет колчества элементов массива,
+            if (a[i] == a[i - 1] / 3)               //больших предыдущего в 3 раза
+                k++;
+            } 
+
+        System.out.println("Элементов, больших предыдущего в 3 раза: " + k);    
+    }
+    
+}
