@@ -1,0 +1,63 @@
+/* Дан одномерный массив а. записать в массив z все порядковые номера элементов
+массива а, равные 1. затем упорядочить по возрастанию элементы массива а,
+расположенные между двумя последними элементами, равными 1. */
+
+import java.util.Scanner;
+import java.lang.Math;
+
+public class Pr2_z2 {
+    public static void main (String args[]) {
+        
+        int k = 0;
+        //int min = 0;
+
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Введите размер массива: ");      //ввод с консоли размера массива n
+        int n = sc.nextInt();
+        System.out.println("Размер массива: " + n);
+
+        int[] a = new int[n];
+        int[] z = new int[n];
+
+        System.out.println("Ваш массив: ");
+        for (int i = 0; i < n; i++){                //заполнение массива рандомными значениями
+            a[i] = (int) (Math.random() *12);
+            System.out.print(a[i] + " ");
+        }
+        System.out.println();
+
+        for (int i = 0; i < n; i++){
+            if (a[i] == 1){
+                z[k] = i;
+                k++;
+            }
+        }
+        System.out.println("Размер массива z: " + k);
+
+        System.out.println("Порядковые номера элементов, равных 1: ");
+        for (int i = 0; i < k; i++){                                        //вывод массива z, где лежат индексы единииц исходного массива
+            System.out.print(z[i] + " ");
+        }
+        System.out.println(" ");
+        sc.close();
+
+        int boofer = 0;
+        
+        for (int i = z[k - 2]; i < z[k - 1]; i++){
+            int min = a[i];
+            if (a[i] > a[i + 1]){
+                boofer = a[i];
+                a[i] = a[i + 1];
+                a[i + 1] = boofer;
+            }
+        }
+
+        System.out.println("Ваш изменённый массив: ");
+        for (int i = 0; i < n; i++){
+            System.out.print(a[i] + " ");
+        }
+    }
+    
+}
+
+// не получается корректно отсортировать элементы массива а, которые стоят между последними двумя единицами
